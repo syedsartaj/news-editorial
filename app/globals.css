@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --news-red: #dc2626;
+  --news-black: #000000;
+  --news-gray: #f3f4f6;
+}
+
+body {
+  font-family: var(--font-roboto), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-baskerville), Georgia, serif;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  .font-baskerville {
+    font-family: var(--font-baskerville), Georgia, serif;
+  }
+
+  .font-roboto {
+    font-family: var(--font-roboto), system-ui, sans-serif;
+  }
+
+  .news-divider {
+    @apply border-t-2 border-black;
+  }
+
+  .category-tag {
+    @apply inline-block bg-red-600 text-white text-xs font-bold px-2 py-1 uppercase tracking-wide;
+  }
+
+  .article-link {
+    @apply hover:text-red-600 transition-colors duration-200;
+  }
+
+  .breaking-news-ticker {
+    animation: scroll-left 30s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .news-card {
+    @apply bg-white border border-gray-200 hover:shadow-lg transition-shadow duration-300;
+  }
+
+  .news-header-border {
+    @apply border-b-4 border-black;
+  }
+
+  .section-title {
+    @apply font-baskerville text-2xl font-bold pb-2 mb-4 border-b-2 border-black uppercase tracking-wide;
+  }
+
+  .timestamp {
+    @apply text-xs text-gray-500 uppercase tracking-wide;
+  }
+
+  .byline {
+    @apply text-sm text-gray-700 font-medium;
+  }
+
+  .excerpt-text {
+    @apply text-gray-700 leading-relaxed;
+  }
+
+  /* Print-style elements */
+  .print-column {
+    @apply border-r border-gray-300 pr-4;
+  }
+
+  .print-column:last-child {
+    @apply border-r-0;
+  }
+
+  /* Newspaper-style drop cap */
+  .drop-cap::first-letter {
+    @apply float-left text-6xl font-bold leading-none mr-2 text-red-600;
+    font-family: var(--font-baskerville);
+  }
+
+  /* Breaking news flash */
+  .breaking-flash {
+    animation: flash 1.5s ease-in-out infinite;
+  }
+
+  @keyframes flash {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
